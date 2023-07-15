@@ -5,6 +5,8 @@ from django.core.paginator import Paginator
 from .models import Post, Author, Category
 from .filters import PostFilter
 from .forms import PostForm
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+
 
 class NewsList(ListView):
   model = Post  # указываем модель, объекты которой мы будем выводить
@@ -45,12 +47,12 @@ class Search(ListView):
     context['all_posts'] = Post.objects.all() # Для отображения общего кол-ва публикаций на сайте
     return context
 
-class CreatePost(CreateView):
+class CreatePost(PermissionRequiredMixin, CreateView):
   model = Post
   template_name = 'create_post.html'
   form_class = PostForm
 
-class EditPost(UpdateView):
+class EditPost(PermissionRequiredMixin, UpdateView):
   template_name = 'edit_post.html'
   form_class = PostForm
 
@@ -58,14 +60,14 @@ class EditPost(UpdateView):
     id = self.kwargs.get('pk')
     return Post.objects.get(pk=id)
 
-class DeletePost2(DeleteView):
+class DeletePost2(PermissionRequiredMixin, DeleteView):
   model = Post
   template_name = 'delete_post.html'
   context_object_name = 'postdelete'
   queryset = Post.objects.all()
   success_url = '/../../'
 
-class DeletePost(DeleteView):
+class DeletePost(PermissionRequiredMixin, DeleteView):
   template_name = 'delete_post.html'
   queryset = Post.objects.all()
   success_url = '/news/'

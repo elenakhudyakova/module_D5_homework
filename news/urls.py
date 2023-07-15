@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import NewsList, NewsItem, Search, CreatePost, EditPost, DeletePost
+from .views import NewsList, NewsItem, Search, CreatePost, EditPost, DeletePost, DeletePost2
 
 urlpatterns = [
   path('', NewsList.as_view()),
