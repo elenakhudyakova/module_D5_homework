@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'news',
     'django_filters',
     'bootstrap4',
-    'protect',
+    'protected',
     'sign',
 
    'allauth',
