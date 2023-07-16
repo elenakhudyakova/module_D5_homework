@@ -30,6 +30,7 @@ def add_authors(request):
 class BaseRegisterView(CreateView):
     model = User
     form_class = BaseRegisterForm
+    template_name = 'sign/register.html'
     success_url = '/'
 
     def form_valid(self, form):
