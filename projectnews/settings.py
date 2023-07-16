@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-4zx&=u!i&ll_x2^_ta3991#islft4f68w%d8ge)%7*qdr1od05
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1'] # 1
 
 
 # Application definition
@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'news',
     'django_filters',
     'bootstrap4',
+    'protect',
     'sign',
 
    'allauth',
@@ -158,7 +159,7 @@ STATICFILES_DIRS = [BASE_DIR / "static"]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_URL = '/account/login/'
+LOGIN_URL = '/account/login/' # 4
 LOGIN_REDIRECT_URL = '/'
 
 EMAIL_HOST = 'smtp.gmail.com'
